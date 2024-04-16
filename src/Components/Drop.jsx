@@ -34,7 +34,7 @@ const Drop = memo(({ dropable }) => {
 
 
     return (
-        <section ref={drop} className="w-3/4 border-2 border-black">
+        <section ref={drop} className="w-3/4 border-2 border-black min-w-[300px]">
             <ComponentModal boolean={boolean} componentType ={boolean.componentType} setboolean = {setboolean}/>
         </section>
     )

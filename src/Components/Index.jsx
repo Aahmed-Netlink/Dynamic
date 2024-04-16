@@ -57,7 +57,7 @@ const Index = () => {
 
     return (
         <DndProvider backend={HTML5Backend} >
-            <div className="h-screen">
+            <div className="h-screen min-w-[600px]">
                 <header className="bg-slate-50 h-[10%] flex justify-center items-center">
                     <h1 className="text-2xl font-semibold" >Dynamic Form</h1>
                 </header>

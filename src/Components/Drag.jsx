@@ -5,7 +5,7 @@ const Drag = ({ dragable,dropable }) => {
     // console.log(dragable);
 
     return (
-        <aside className="w-1/4 border-2 border-black p-4">
+        <aside className="w-1/4 border-2 border-black p-4 min-w-[250px]">
             <h2
                 className="mb-8 font-bold uppercase md:text-xl font-sans text-center"
             >
