@@ -53,6 +53,8 @@ const Index = () => {
         },
     ])
 
+    const [drop] = useState([])
+
     return (
         <DndProvider backend={HTML5Backend} >
             <div className="h-screen">
@@ -60,13 +62,13 @@ const Index = () => {
                     <h1 className="text-2xl font-semibold" >Dynamic Form</h1>
                 </header>
                 <section className="h-[80%] flex flex-row gap-4 p-3">
-                    <Drag/>
-                    <Drop />
+                    <Drag dragable={drag} dropable= {drop}/>
+                    <Drop dropable={drop}/>
                 </section>
-            </div>
             <footer className=" bg-slate-50 h-[10%]  flex justify-center items-center">
                 <h2 className="text-2xl font-semibold">Footer</h2>
             </footer>
+            </div>
         </DndProvider>
     )
 }
