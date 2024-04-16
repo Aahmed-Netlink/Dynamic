@@ -5,6 +5,7 @@ const Drag = ({ drag }) => {
 
     return (
         <>
+        Drag
         </>
     )
 }

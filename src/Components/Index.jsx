@@ -3,7 +3,6 @@ import { useState } from "react"
 import { v4 as uuidv4 } from "uuid"
 import { DndProvider } from "react-dnd"
 import { HTML5Backend } from "react-dnd-html5-backend"
-import { Flex, Layout } from 'antd';
 
 import Drag from "./Drag"
 import Drop from "./Drop"
@@ -53,56 +52,23 @@ const Index = () => {
             id: uuidv4(),
         },
     ])
-    const { Header, Footer, Sider, Content } = Layout;
-
-    //Styles
-    const headerStyle = {
-        textAlign: 'center',
-        height: 64,
-        paddingInline: 48,
-        lineHeight: '64px',
-    };
-    const contentStyle = {
-        textAlign: 'center',
-        minHeight: 120,
-        lineHeight: '120px',
-        color: '#fff',
-        backgroundColor: '#0958d9',
-    };
-    const footerStyle = {
-        textAlign: 'center',
-        color: '#fff',
-        backgroundColor: '#4096ff',
-    };
-    const layoutStyle = {
-        borderRadius: 8,
-        overflow: 'hidden',
-        width: '100%',
-        minWidth: '50vw',
-    };
 
     return (
         <DndProvider backend={HTML5Backend} >
-            <Flex gap="middle" wrap="wrap">
-                <Layout style={layoutStyle} className="h-screen">
+            <div className="h-screen">
+                <header className="bg-slate-50 h-[10%] flex justify-center items-center">
+                    <h1 className="text-2xl font-semibold" >Dynamic Form</h1>
+                </header>
+                <section className="h-[80%]">
+                    <Drag />
+                    <section>
 
-                    <Header
-                        style={headerStyle}
-                        className="font-semibold bg-slate-50 text-2xl"
-                    >
-                        Dynamic Form
-                    </Header>
-
-                    <Layout>
-                        <Sider className="w-2/5">
-                            Sider
-                        </Sider>
-                        <Content className="w-3/5">Content</Content>
-                    </Layout>
-
-                    <Footer style={footerStyle}>Footer</Footer>
-                </Layout>
-            </Flex>
+                    </section>
+                </section>
+            </div>
+            <footer className=" bg-slate-50 h-[10%]  flex justify-center items-center">
+                <h2 className="text-2xl font-semibold">Footer</h2>
+            </footer>
         </DndProvider>
     )
 }
