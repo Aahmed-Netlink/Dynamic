@@ -2,7 +2,9 @@ import React from 'react'
 
 const Drop = () => {
     return (
-        <div>Drop</div>
+        <section className="w-3/4 border-2 border-black">
+
+        </section>
     )
 }
 

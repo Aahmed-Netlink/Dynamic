@@ -59,11 +59,9 @@ const Index = () => {
                 <header className="bg-slate-50 h-[10%] flex justify-center items-center">
                     <h1 className="text-2xl font-semibold" >Dynamic Form</h1>
                 </header>
-                <section className="h-[80%]">
-                    <Drag />
-                    <section>
-
-                    </section>
+                <section className="h-[80%] flex flex-row gap-4 p-3">
+                    <Drag/>
+                    <Drop />
                 </section>
             </div>
             <footer className=" bg-slate-50 h-[10%]  flex justify-center items-center">
