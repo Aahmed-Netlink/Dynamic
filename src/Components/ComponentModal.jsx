@@ -1,26 +1,65 @@
 import { Button, Modal, Input } from 'antd';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
-const ComponentModal = ({ }) => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+const ComponentModal = ({ boolean, componentType, setboolean }) => {
 
-    const showModal = () => {
-        setIsModalOpen(true);
-    };
     const handleOk = () => {
-        setIsModalOpen(false);
+        setboolean((prevState) => ({
+            ...prevState,
+            open: false,
+        }))
     };
     const handleCancel = () => {
-        setIsModalOpen(false);
+        setboolean((prevState) => ({
+            ...prevState,
+            open: false,
+        }))
     };
+
+
+    const label = useRef()
+    const placeholder = useRef()
+    const option = useRef()
+    const btnCaption = useRef()
+
+    console.log(boolean);
 
     return (
         <div>
-            <Button type="primary" onClick={showModal}>
-                Open Modal
-            </Button>
-            <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-                <Input placeholder='Enter Label' />
+            <Modal title="Basic Modal" open={boolean.open} onOk={handleOk} onCancel={handleCancel}>
+                {
+                    componentType === "calander" ||
+                        componentType === "date Picker" ?
+                        <>
+                            <label htmlFor=""> Enter Label </label>
+                            <Input ref={label} />
+                        </>
+                        : componentType === "checkbox" ||
+                            componentType === "dropdown" ||
+                            componentType === "radio Group" ?
+                            <>
+                                <label htmlFor=""> Enter Label </label>
+                                <Input ref={label} />
+                                <label>Enter Option</label>
+                                <Input ref={option} />
+                            </>
+                            : componentType === "input" ||
+                                componentType === "number Format" ||
+                                componentType === "text Area" ||
+                                componentType === "upload" ?
+                                <>
+                                    <label>Enter Label</label>
+                                    <Input ref={label} />
+                                    <label >Enter Placeholder</label>
+                                    <Input ref={placeholder} />
+                                </>
+                                : componentType === "button" ?
+                                    <>
+                                        <label>Enter Button Caption</label>
+                                        <Input ref={btnCaption} />
+                                    </>
+                                    : ""
+                }
             </Modal>
         </div>
     )

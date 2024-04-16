@@ -2,7 +2,7 @@ import Dragable from "./Dragable";
 
 const Drag = ({ dragable,dropable }) => {
 
-    console.log(dragable);
+    // console.log(dragable);
 
     return (
         <aside className="w-1/4 border-2 border-black p-4">

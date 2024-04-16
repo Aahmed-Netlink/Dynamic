@@ -19,6 +19,8 @@ const Dragable = ({ item, dropable }) => {
         })
     }), [],)
 
+    // console.log(isDragging);
+
     return (
         <>
             <li ref={drag} className="bg-zinc-400 p-3 capitalize rounded-lg flex flex-row justify-center gap-3">
