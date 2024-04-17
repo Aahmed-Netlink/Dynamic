@@ -57,13 +57,13 @@ const Index = () => {
 
     return (
         <DndProvider backend={HTML5Backend} >
-            <div className="h-screen min-w-[600px]">
-                <header className="bg-slate-50 h-[10%] flex justify-center items-center">
+            <div className="h-screen min-w-[600px] bg-[#399c7e] text-slate-100 font-OpenSans">
+                <header className=" h-[10%] flex justify-center items-center">
                     <h1 className="text-2xl font-semibold" >Dynamic Form</h1>
                 </header>
                 <section className="h-[90%] flex flex-row gap-4 p-4 ">
                     <Drag dragable={drag} />
-                    <Drop droppable={droppable}/>
+                    <Drop droppable={droppable} />
                 </section>
                 {/* <footer className=" bg-slate-50 h-[10%]  flex justify-center items-center">
                     <h2 className="text-2xl font-semibold">Footer</h2>

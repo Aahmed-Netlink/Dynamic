@@ -51,7 +51,7 @@ const Drop = memo(({ droppable }) => {
     }), [])
 
     return (
-        <section ref={drop} className="w-3/4 border-2 p-8 border-black min-w-[300px] rounded-lg overflow-scroll no-scrollbar text-center">
+        <section ref={drop} className="w-3/4 bg-[#051835] border-2 p-8 border-black min-w-[300px] rounded-lg overflow-scroll no-scrollbar text-center">
             <ComponentModal boolean={boolean} componentType={boolean.componentType} setboolean={setboolean} droppable={droppable} />
             <h2 className='mb-8 font-bold uppercase md:text-xl font-sans'>
                 From
@@ -142,8 +142,8 @@ const Drop = memo(({ droppable }) => {
                                                                                     style={{
                                                                                         width: '250px'
                                                                                     }}
-                                                                                defaultValue={item.selectOption[0]}
-                                                                                options={item.selectOption}
+                                                                                    defaultValue={item.selectOption[0]}
+                                                                                    options={item.selectOption}
                                                                                 />
                                                                             </>
                                                                             : ''
