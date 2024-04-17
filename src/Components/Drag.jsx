@@ -1,11 +1,11 @@
 import Dragable from "./Dragable";
 
-const Drag = ({ dragable,dropable }) => {
+const Drag = ({ dragable }) => {
 
     // console.log(dragable);
 
     return (
-        <aside className="w-1/4 border-2 border-black p-4 min-w-[250px]">
+        <aside className="w-1/4 border-2 border-black p-4 min-w-[250px] rounded-lg overflow-scroll no-scrollbar">
             <h2
                 className="mb-8 font-bold uppercase md:text-xl font-sans text-center"
             >
@@ -17,7 +17,6 @@ const Drag = ({ dragable,dropable }) => {
                         <Dragable
                             key={item.id}
                             item={item}
-                            dropable ={dropable}
                         />
                     )
                 }

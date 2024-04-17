@@ -1,17 +1,12 @@
 import { useDrag } from "react-dnd";
 import { ItemType } from '../Util/ItemType'
 
-const Dragable = ({ item, dropable }) => {
+const Dragable = ({ item, }) => {
 
     const [{ isDragging, didDrop }, drag] = useDrag(() => ({
         type: ItemType.ELEMENT,
         item: { name: item },
         end: (item, monitor) => {
-            const dropResult = monitor.getDropResult()
-            if (item && dropResult) {
-                let tempList = dropable;
-                tempList.push(item.name)
-            }
         },
         collect: (monitor) => ({
             opacity: monitor.isDragging() ? 0 : 1,
