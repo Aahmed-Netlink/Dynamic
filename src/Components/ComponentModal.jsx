@@ -1,10 +1,17 @@
 import { Button, Modal, Input } from 'antd';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, } from 'react';
 
-const ComponentModal = ({ boolean, componentType, setboolean, droppable }) => {
-
-    const [selectOption, setSelectOption] = useState([])
-    const [value, setValue] = useState([])
+const ComponentModal = (
+    {
+        boolean,
+        componentType,
+        setboolean,
+        droppable,
+        selectOption,
+        setSelectOption,
+        value,
+        setValue
+    }) => {
 
     const handleOption = () => {
         const enterdOptionLabel = userOptionLabel?.current?.input?.value;
@@ -27,6 +34,7 @@ const ComponentModal = ({ boolean, componentType, setboolean, droppable }) => {
         const enteredLabel = userLabel?.current?.input?.value;
         const enteredPlaceholder = userPlaceholder?.current?.input?.value;
         const enteredbtnCaption = userBtnCaption?.current?.input?.value;
+
 
         setboolean((prevState) => ({
             ...prevState,
@@ -75,15 +83,15 @@ const ComponentModal = ({ boolean, componentType, setboolean, droppable }) => {
                     componentType === "calander" ?
                         <>
                             <label htmlFor=""> Enter Label </label>
-                            <Input id='1' ref={userLabel} allowClear />
+                            <Input ref={userLabel} allowClear />
                         </>
                         : componentType === "checkbox" ||
                             componentType === "radio Group" ?
                             <>
                                 <label htmlFor=""> Enter Label </label>
-                                <Input id='2' ref={userLabel} allowClear />
+                                <Input ref={userLabel} allowClear />
                                 <label>Enter Option</label>
-                                <Input id='3' ref={userOption} allowClear />
+                                <Input ref={userOption} allowClear />
                                 <Button type='primary' className="mt-4" onClick={handleValue}>
                                     Save
                                 </Button>
@@ -91,11 +99,11 @@ const ComponentModal = ({ boolean, componentType, setboolean, droppable }) => {
                             : componentType === "dropdown" ?
                                 <>
                                     <label htmlFor=""> Enter Label </label>
-                                    <Input id='2' ref={userLabel} allowClear />
+                                    <Input ref={userLabel} allowClear />
                                     <label>Enter Value</label>
-                                    <Input id='3' ref={userValue} allowClear />
+                                    <Input ref={userValue} allowClear />
                                     <label>Enter Option Label</label>
-                                    <Input id='3' ref={userOptionLabel} allowClear />
+                                    <Input ref={userOptionLabel} allowClear />
                                     <Button type='primary' className="mt-4" onClick={handleOption}>
                                         Save
                                     </Button>
@@ -108,14 +116,14 @@ const ComponentModal = ({ boolean, componentType, setboolean, droppable }) => {
 
                                     <>
                                         <label>Enter Label</label>
-                                        <Input id='4' ref={userLabel} allowClear />
+                                        <Input ref={userLabel} allowClear />
                                         <label >Enter Placeholder</label>
-                                        <Input id='5' ref={userPlaceholder} allowClear />
+                                        <Input ref={userPlaceholder} allowClear />
                                     </>
                                     : componentType === "button" ?
                                         <>
                                             <label>Enter Button Caption</label>
-                                            <Input id='6' ref={userBtnCaption} allowClear />
+                                            <Input ref={userBtnCaption} allowClear />
                                         </>
                                         : ""
                 }

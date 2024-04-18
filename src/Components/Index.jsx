@@ -55,6 +55,14 @@ const Index = () => {
 
     const [droppable] = useState([])
 
+    const [boolean, setboolean] = useState({
+        open: false,
+        componentType: null
+    })
+
+    const [selectOption, setSelectOption] = useState([])
+    const [value, setValue] = useState([])
+
     return (
         <DndProvider backend={HTML5Backend} >
             <div className="h-screen min-w-[600px] bg-[#399c7e] text-slate-100 font-OpenSans">
@@ -62,12 +70,20 @@ const Index = () => {
                     <h1 className="text-2xl font-semibold" >Dynamic Form</h1>
                 </header>
                 <section className="h-[90%] flex flex-row gap-4 p-4 ">
-                    <Drag dragable={drag} />
-                    <Drop droppable={droppable} />
+                    <Drag
+                        dragable={drag}
+                    />
+                    <Drop
+                        droppable={droppable}
+                        boolean = {boolean}
+                        setboolean = {setboolean}
+                        selectOption={selectOption}
+                        setSelectOption={setSelectOption}
+                        value={value}
+                        setValue={setValue}
+                    />
+
                 </section>
-                {/* <footer className=" bg-slate-50 h-[10%]  flex justify-center items-center">
-                    <h2 className="text-2xl font-semibold">Footer</h2>
-                </footer> */}
             </div>
         </DndProvider>
     )

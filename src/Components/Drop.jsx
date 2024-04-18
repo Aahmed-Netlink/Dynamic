@@ -1,7 +1,7 @@
 import { useDrop } from "react-dnd"
 import { ItemType } from "../Util/ItemType"
 import ComponentModal from './ComponentModal'
-import { memo, useState } from "react"
+import { memo, } from "react"
 
 import { UploadOutlined } from '@ant-design/icons';
 
@@ -19,7 +19,15 @@ import {
 } from 'antd';
 
 
-const Drop = memo(({ droppable }) => {
+const Drop = memo(({
+    droppable,
+    boolean,
+    setboolean,
+    selectOption,
+    setSelectOption,
+    value,
+    setValue
+}) => {
 
     const { token } = theme.useToken();
     const wrapperStyle = {
@@ -28,10 +36,6 @@ const Drop = memo(({ droppable }) => {
         borderRadius: token.borderRadiusLG,
     };
 
-    const [boolean, setboolean] = useState({
-        open: false,
-        componentType: null
-    })
     const [{ isOver, canDrop }, drop] = useDrop(() => ({
         accept: ItemType.ELEMENT,
         drop: (item, monitor) => {
@@ -51,8 +55,17 @@ const Drop = memo(({ droppable }) => {
     }), [])
 
     return (
-        <section ref={drop} className="w-3/4 bg-[#051835] border-2 p-8 border-black min-w-[300px] rounded-lg overflow-scroll no-scrollbar text-center">
-            <ComponentModal boolean={boolean} componentType={boolean.componentType} setboolean={setboolean} droppable={droppable} />
+        <section ref={drop} className="w-3/4 bg-slate-100 border-2 p-8 border-black min-w-[300px] rounded-lg overflow-scroll no-scrollbar text-center text-black">
+            <ComponentModal
+                boolean={boolean}
+                componentType={boolean.componentType}
+                setboolean={setboolean}
+                droppable={droppable}
+                selectOption={selectOption}
+                setSelectOption={setSelectOption}
+                value={value}
+                setValue={setValue}
+            />
             <h2 className='mb-8 font-bold uppercase md:text-xl font-sans'>
                 From
             </h2>
