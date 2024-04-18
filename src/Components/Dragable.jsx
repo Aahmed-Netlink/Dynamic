@@ -6,8 +6,6 @@ const Dragable = ({ item, }) => {
     const [{ isDragging, didDrop }, drag] = useDrag(() => ({
         type: ItemType.ELEMENT,
         item: { name: item },
-        end: (item, monitor) => {
-        },
         collect: (monitor) => ({
             opacity: monitor.isDragging() ? 0 : 1,
             isDragging: !!monitor.getItem(),

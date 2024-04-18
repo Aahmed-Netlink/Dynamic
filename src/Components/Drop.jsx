@@ -39,8 +39,6 @@ const Drop = memo(({
     const [{ isOver, canDrop }, drop] = useDrop(() => ({
         accept: ItemType.ELEMENT,
         drop: (item, monitor) => {
-            // console.log('Dropped item:', item);
-            // console.log('Is over:', monitor.isOver());
             setboolean((prevState) => ({
                 ...prevState,
                 open: monitor.isOver(),
@@ -85,37 +83,35 @@ const Drop = memo(({
                                 {
                                     item.componentType === "calander" ?
                                         <>
-                                            <label>{item.label}</label>
+                                            <label htmlFor={item.id}>{item.label}</label>
                                             <div style={wrapperStyle}>
                                                 <Calendar fullscreen={false} />
                                             </div>
                                         </>
                                         : item.componentType === "input" ?
                                             <>
-                                                <label>{item.label}</label>
+                                                <label htmlFor={item.id}>{item.label}</label>
                                                 <Input placeholder={item.placeholder} />
                                             </>
                                             : item.componentType === 'button' ?
                                                 <Button
                                                     type='primary'
-                                                // onClick={(e) => { e.preventDefault() }}
                                                 >
                                                     {item.btnCaption}
                                                 </Button>
                                                 : item.componentType === "text Area" ?
                                                     <>
-                                                        <label>{item.label}</label>
+                                                        <label htmlFor={item.id}>{item.label}</label>
                                                         <Input.TextArea placeholder={item.placeholder} />
                                                     </>
                                                     : item.componentType === "number Format" ?
                                                         <>
-                                                            <label>{item.label}</label>
+                                                            <label htmlFor={item.id}>{item.label}</label>
                                                             <InputNumber placeholder={item.placeholder} />
                                                         </>
                                                         : item.componentType === "upload" ?
-
                                                             <>
-                                                                <label>{item.label}</label>
+                                                                <label htmlFor={item.id}>{item.label}</label>
                                                                 <Upload>
                                                                     <Button icon={<UploadOutlined />}>
                                                                         {item.placeholder}
@@ -124,7 +120,7 @@ const Drop = memo(({
                                                             </>
                                                             : item.componentType === "date Picker" ?
                                                                 <>
-                                                                    <label>{item.label}</label>
+                                                                    <label htmlFor={item.id}>{item.label}</label>
                                                                     <DatePicker
                                                                         format={"DD/MM/YYYY"}
                                                                         placeholder={item.placeholder}
@@ -132,14 +128,14 @@ const Drop = memo(({
                                                                 </>
                                                                 : item.componentType === "checkbox" ?
                                                                     <>
-                                                                        <label>{item.label}</label>
+                                                                        <label htmlFor={item.id}>{item.label}</label>
                                                                         <Checkbox.Group
                                                                             options={item.option}
                                                                         />
                                                                     </>
                                                                     : item.componentType === "radio Group" ?
                                                                         <>
-                                                                            <label>{item.label}</label>
+                                                                            <label htmlFor={item.id}>{item.label}</label>
                                                                             <Radio.Group key={index}>
                                                                                 {item.option.map(
                                                                                     (data, value) =>
@@ -150,7 +146,7 @@ const Drop = memo(({
                                                                         </>
                                                                         : item.componentType === "dropdown" ?
                                                                             <>
-                                                                                <label>{item.label}</label>
+                                                                                <label htmlFor={item.id}>{item.label}</label>
                                                                                 <Select
                                                                                     style={{
                                                                                         width: '250px'

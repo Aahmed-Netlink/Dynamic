@@ -1,6 +1,7 @@
+import { memo } from "react";
 import Dragable from "./Dragable";
 
-const Drag = ({ dragable }) => {
+const Drag = memo(({ dragable }) => {
 
     // console.log(dragable);
 
@@ -23,6 +24,6 @@ const Drag = ({ dragable }) => {
             </ul>
         </aside>
     )
-}
+})
 
 export default Drag

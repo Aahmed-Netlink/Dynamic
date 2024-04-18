@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { memo, useState } from "react"
 
 import { v4 as uuidv4 } from "uuid"
 import { DndProvider } from "react-dnd"
@@ -8,7 +8,7 @@ import { HTML5Backend } from "react-dnd-html5-backend"
 import Drag from "./Drag"
 import Drop from "./Drop"
 
-const Index = () => {
+const Index = memo(() => {
 
     // Defining States
     const [drag, setDrag] = useState([
@@ -89,6 +89,6 @@ const Index = () => {
             </div>
         </DndProvider>
     )
-}
+})
 
 export default Index
