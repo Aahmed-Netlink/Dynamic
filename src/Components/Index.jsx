@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid"
 import { DndProvider } from "react-dnd"
 import { HTML5Backend } from "react-dnd-html5-backend"
 
+
 import Drag from "./Drag"
 import Drop from "./Drop"
 
@@ -63,6 +64,7 @@ const Index = () => {
     const [selectOption, setSelectOption] = useState([])
     const [value, setValue] = useState([])
 
+
     return (
         <DndProvider backend={HTML5Backend} >
             <div className="h-screen min-w-[600px] bg-[#399c7e] text-slate-100 font-OpenSans">
@@ -75,8 +77,8 @@ const Index = () => {
                     />
                     <Drop
                         droppable={droppable}
-                        boolean = {boolean}
-                        setboolean = {setboolean}
+                        boolean={boolean}
+                        setboolean={setboolean}
                         selectOption={selectOption}
                         setSelectOption={setSelectOption}
                         value={value}

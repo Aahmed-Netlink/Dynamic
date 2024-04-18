@@ -1,4 +1,5 @@
 import { Button, Modal, Input } from 'antd';
+import Swal from 'sweetalert2'
 import { useRef, } from 'react';
 
 const ComponentModal = (
@@ -22,11 +23,29 @@ const ComponentModal = (
             value: enterdValue
         }
         selectOption.push(editable)
+
+        Swal.fire({
+            title: "Option Saved!",
+            html: "Option Saved Successfullt",
+            timer: 500,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        })
     }
 
     const handleValue = () => {
         const enteredOption = userOption?.current?.input?.value;
         value.push(enteredOption)
+
+        Swal.fire({
+            title: "Option Saved!",
+            html: "Option Saved Successfullt",
+            timer: 500,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        })
     }
 
     const handleOk = () => {
@@ -78,7 +97,7 @@ const ComponentModal = (
 
     return (
         <div>
-            <Modal title="Basic Modal" open={boolean.open} onOk={handleOk} onCancel={handleCancel}>
+            <Modal destroyOnClose title="Basic Modal" open={boolean.open} onOk={handleOk} onCancel={handleCancel}>
                 {
                     componentType === "calander" ?
                         <>
