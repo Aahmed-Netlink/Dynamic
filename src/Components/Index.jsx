@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid"
 import { DndProvider } from "react-dnd"
 import { HTML5Backend } from "react-dnd-html5-backend"
 
+import { Button } from "antd"
 
 import Drag from "./Drag"
 import Drop from "./Drop"
@@ -71,7 +72,7 @@ const Index = memo(() => {
                 <header className=" h-[10%] flex justify-center items-center">
                     <h1 className="text-2xl font-semibold" >Dynamic Form</h1>
                 </header>
-                <section className="h-[90%] flex flex-row gap-4 p-4 ">
+                <section className="h-[80%] flex flex-row gap-4 p-4 ">
                     <Drag
                         dragable={drag}
                     />
@@ -84,8 +85,12 @@ const Index = memo(() => {
                         value={value}
                         setValue={setValue}
                     />
-
                 </section>
+                <footer className=" h-[10%] flex justify-center items-center">
+                    <Button type="primary" className="px-3 py-1 text-center text-sm font-semibold">
+                        SAVE
+                    </Button>
+                </footer>
             </div>
         </DndProvider>
     )
