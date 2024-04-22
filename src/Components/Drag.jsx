@@ -6,7 +6,7 @@ const Drag = memo(({ dragable }) => {
     // console.log(dragable);
 
     return (
-        <aside className="w-1/4 border-2 border-black p-4 bg-[#051835] min-w-[250px] rounded-lg overflow-scroll no-scrollbar">
+        <aside className="w-1/4 border-2 border-black p-4 bg-[#334D50] min-w-[250px] rounded-lg overflow-scroll no-scrollbar">
             <h2
                 className="mb-8 font-bold uppercase md:text-xl font-sans text-center"
             >

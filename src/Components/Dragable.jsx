@@ -16,7 +16,7 @@ const Dragable = ({ item, }) => {
 
     return (
         <>
-            <li ref={drag} className="bg-[#1e2f49] p-3 capitalize rounded-lg flex flex-row justify-center gap-3">
+            <li ref={drag} className="bg-[#CBDFBD] p-3 text-[#292929] capitalize rounded-lg flex flex-row justify-center gap-3">
                 {
                     item.componentType
                 }
