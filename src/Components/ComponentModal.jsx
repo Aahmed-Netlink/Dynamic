@@ -1,6 +1,7 @@
 import { Button, Modal, Input } from 'antd';
 import Swal from 'sweetalert2'
 import { useRef, } from 'react';
+import {v4 as uuid} from 'uuid'
 
 const ComponentModal = (
     {
@@ -61,6 +62,7 @@ const ComponentModal = (
         }))
 
         const editable = {
+            id: uuid(),
             label: enteredLabel,
             placeholder: enteredPlaceholder,
             option: value,
@@ -75,7 +77,7 @@ const ComponentModal = (
         setValue([])
     };
 
-    console.log(droppable);
+    // console.log(droppable);
 
     const handleCancel = () => {
         setboolean((prevState) => (

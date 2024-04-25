@@ -36,6 +36,8 @@ const Drop = memo(({
         borderRadius: token.borderRadiusLG,
     };
 
+    // console.log(droppable)
+
     const [{ isOver, canDrop }, drop] = useDrop(() => ({
         accept: ItemType.ELEMENT,
         drop: (item, monitor) => {

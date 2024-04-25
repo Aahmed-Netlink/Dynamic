@@ -3,7 +3,7 @@ import { ItemType } from '../Util/ItemType'
 
 const Dragable = ({ item, }) => {
 
-    const [{ isDragging, didDrop }, drag] = useDrag(() => ({
+    const [{ isDragging }, drag] = useDrag(() => ({
         type: ItemType.ELEMENT,
         item: { name: item },
         collect: (monitor) => ({

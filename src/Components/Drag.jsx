@@ -1,9 +1,6 @@
 import { memo } from "react";
 import Dragable from "./Dragable";
-
 const Drag = memo(({ dragable }) => {
-
-    // console.log(dragable);
 
     return (
         <aside className="w-1/4 border-2 border-black p-4 bg-[#334D50] min-w-[250px] rounded-lg overflow-scroll no-scrollbar">

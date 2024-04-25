@@ -1,56 +1,81 @@
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
-import { Avatar, Card } from 'antd';
-import { NavLink } from 'react-router-dom';
-
-const contentStyle = {
-    height: '160px',
-    color: '#fff',
-    lineHeight: '160px',
-    textAlign: 'center',
-    background: '#364d79',
-};
+import { useState, useEffect } from 'react';
+import { Card, Button } from 'antd';
+import { NavLink, } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { formActions } from "../Store/FormStore"
 
 const HomePage = () => {
+
+    const dispatch = useDispatch()
+    const forms = useSelector((state) => state.forms)
+
+    console.log("Forms From Redux -->", forms);
+
+    const handleDelete = (id) => {
+        console.log("Id Of Deleted Component ->", id);
+        const newForms = forms.filter((item)=> item.id !== id);
+        console.log(newForms)
+        dispatch(formActions.handleDelete(newForms))
+    }
+
+    // useEffect(() => {
+    //     const myData = localStorage.getItem('forms');
+    //     const forms = JSON.parse(myData);
+    //     setFromsState([...formsState, ...forms]);
+    // }, []);
+
+    // console.log(formsState);
     return (
         <>
-            <main className='grid grid-rows-2 px-4 py-2 h-[100%]'>
-                <section className='px-28 bg-[#CBDFBD] flex items-center rounded-md'>
-                    <Card
-                        style={{ width: 200 }}
-                        className='text-center outline outline-2'
-                        cover={
-                            <img
-                                alt="example"
-                                src="https://ssl.gstatic.com/docs/templates/thumbnails/forms-blank-googlecolors.png"
-                            />
-                        }
-                    >
-                        <NavLink to='/Dynamic/form-page'>
+            <main className='grid grid-rows-2 px-4 py-2 h-[100%] gap-4'>
+                <section className='px-28 bg-[#CBDFBD] flex items-center flex-row rounded-md'>
+                    <NavLink to='/Dynamic/form-page'>
+                        <Card
+                            style={{ width: 200 }}
+                            className='text-center outline outline-2'
+                            cover={
+                                <img
+                                    alt="example"
+                                    src="https://ssl.gstatic.com/docs/templates/thumbnails/forms-blank-googlecolors.png"
+                                />
+                            }
+                        >
                             <h2>Click To Create Form</h2>
-                        </NavLink>
-                    </Card>
+                        </Card>
+                    </NavLink>
                 </section>
-                <section></section>
-                {/* <section className='w-[100%] flex flex-col pl-10 my-28'>
-                    <h1 className='text-[50px] font-thin'>
-                        Get Quick Forms,
-                        <br />
-                        With Form Maker
-                    </h1>
-                    <p className='font-medium text-slate-600'>
-                        Easily create and share online forms
-                    </p>
-                    <div>
-                        <Button className='bg-[#CBDFBD]'>
-                            <NavLink to='/Dynamic/form-page'>
-                                Go To Forms
-                            </NavLink>
-                        </Button>
-                    </div>
+                <section className='bg-[#CBDFBD] px-28 flex items-center overflow-scroll no-scrollbar rounded-md '>
+                    <ul className='flex flex-row gap-4 overflow-scroll no-scrollbar p-2'>
+                        {
+                            forms.length == 0 ? <div> Create at least one form</div>
+                                : forms.map((item, index) => <li
+                                    key={index}
+                                >
+                                    <Card
+                                        key={index}
+                                        className='text-center outline outline-2 h-[200px] w-[200px]'
+                                    // cover={ 
+                                    //     'form' + (index + 1)
+                                    // }
+                                    >
+                                        {/* <h2>Click To Edit Form</h2> */}
+                                        <p className='font-semibold text-center text-lg pt-6'>
+                                            {'Form' + (index + 1)}
+                                        </p>
+                                        <section className='flex gap-2 justify-center mt-16'>
+                                            <Button type='primary'>
+                                                Edit
+                                            </Button>
+                                            <Button type='primary' danger onClick={() => { handleDelete(item.id) }}>
+                                                Delete
+                                            </Button>
+                                        </section>
+                                    </Card>
+                                </li>
+                                )
+                        }
+                    </ul>
                 </section>
-                <section className='w-[100%] bg-black'>
-                    <img src="" alt="Image Not Found" />
-                </section> */}
             </main>
         </>
     )

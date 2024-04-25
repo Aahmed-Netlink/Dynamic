@@ -17,13 +17,13 @@ const MainNavigation = () => {
                                 HOME
                             </NavLink>
                         </li>
-                        <li>
+                        {/* <li>
                             <NavLink
                                 to='/Dynamic/form-page'
                             >
                                 FORM PAGE
                             </NavLink>
-                        </li>
+                        </li> */}
                     </ul>
                 </nav>
             </header>
