@@ -71,24 +71,40 @@ const Form = memo(() => {
     const dispatch = useDispatch()
 
     const handleSave = (droppable) => {
-        droppable.length === 0 ? Swal.fire({
-            title: "Form Saved!",
-            html: "Form Saved Succesfully",
-            timer: 500,
-            didOpen: () => {
-                Swal.showLoading();
-            }
-        }): 
+        Swal.fire(
+            droppable.length == 0 ?
+                {
+                    title: "Error",
+                    html: "At Drop One Field To Save A From",
+                    timer: 1250,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    }
+                }
+                :
+                {
+                    title: "Form Saved!",
+                    html: "Form Saved Succesfully",
+                    timer: 500,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    }
+                }
+        )
+        droppable.length == 0 ? "" :
         dispatch(formActions.handleSave(...droppable))
         setDroppable([])
-        Swal.fire({
-            title: "Error",
-            html: "Please Drop One Field To Save A Form",
-            timer: 1250,
-            didOpen: () => {
-                Swal.showLoading();
-            }
-        })
+        //     :
+        //     dispatch(formActions.handleSave(...droppable))
+        // setDroppable([])
+        // Swal.fire({
+        //     title: "Form Saved!",
+        //     html: "Form Saved Succesfully",
+        //     timer: 500,
+        //     didOpen: () => {
+        //         Swal.showLoading();
+        //     }
+        // })
     }
 
     return (
