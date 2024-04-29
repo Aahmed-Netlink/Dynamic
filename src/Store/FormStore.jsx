@@ -11,16 +11,22 @@ const formSclice = createSlice({
     initialState: initialForms,
     reducers: {
         handleSave(state, action) {
-            // console.log(action);
             state.forms.push(action.payload)
         },
         handleDelete(state, action) {
             console.log(action.payload);
-
-            // return state.forms.filter((item) => item.id !== action.payload)
             state.forms = action.payload;
-            // console.log(state.forms);
-            // state.forms.push(action.payload)
+        },
+        handleEdit(state, action) {
+            const { id, updatedForm } = action.payload;
+            console.log(id);
+            const formIndex = state.forms.findIndex((form) => form.id == id);
+
+            if (formIndex !== -1) {
+                state.forms[formIndex] = { ...state.forms[formIndex], ...updatedForm };
+            } else {
+                console.error("Form with ID", id, "not found for editing.");
+            }
         },
     }
 });

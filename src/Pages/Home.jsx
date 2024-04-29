@@ -56,9 +56,15 @@ const HomePage = () => {
                                             {'Form' + (index + 1)}
                                         </p>
                                         <section className='flex gap-2 justify-center mt-16'>
-                                            <Button type='primary'>
+                                            <NavLink
+                                                to='/Dynamic/form-page'
+                                                state={forms[index].id}
+                                            >
                                                 Edit
-                                            </Button>
+                                            </NavLink>
+                                            {/* <Button type='primary'>
+                                                Edit
+                                            </Button> */}
                                             <Button type='primary' danger onClick={() => { handleDelete(item.id) }}>
                                                 Delete
                                             </Button>

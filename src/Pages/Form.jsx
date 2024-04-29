@@ -6,61 +6,60 @@ import { HTML5Backend } from "react-dnd-html5-backend"
 
 import { Button } from "antd"
 
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 import Drag from "../Components/Drag"
 import Drop from "../Components/Drop"
 import { useDispatch } from "react-redux"
 import { formActions } from "../Store/FormStore"
 import Swal from 'sweetalert2'
+import { useSelector } from "react-redux"
 
 const Form = memo(() => {
-
+    const ff = useSelector((state) => state.forms)
+    const forms = JSON.parse(JSON.stringify(ff));
     // Defining States
     const [drag, setDrag] = useState([
         {
             componentType: "calander",
-            id: uuidv4(),
         },
         {
             componentType: "checkbox",
-            id: uuidv4(),
         },
         {
             componentType: "date Picker",
-            id: uuidv4(),
         },
         {
             componentType: "dropdown",
-            id: uuidv4(),
         },
         {
             componentType: "input",
-            id: uuidv4(),
         },
         {
             componentType: "number Format",
-            id: uuidv4(),
         },
         {
             componentType: "radio Group",
-            id: uuidv4(),
         },
         {
             componentType: "text Area",
-            id: uuidv4(),
         },
         {
             componentType: "button",
-            id: uuidv4(),
         },
         {
             componentType: "upload",
-            id: uuidv4(),
         },
     ])
     const navigate = useNavigate()
+    const id = useLocation()
+    console.log(id.state);
+    let edit = forms.find((item) =>
+        item.id == id.state
+    )
+    console.log(edit);
 
-    const [droppable, setDroppable] = useState([])
+    const [droppable, setDroppable] = useState(edit?.droppable || [])
+    console.log(droppable);
 
     const [boolean, setboolean] = useState({
         open: false,
@@ -74,8 +73,11 @@ const Form = memo(() => {
 
     const handleSave = (droppable) => {
         const form = {
-            id: uuidv4(),
+            id: id && id.state || uuidv4(),
             droppable: droppable,
+        }
+        if (id.state) {
+            dispatch(formActions.handleEdit(form))
         }
         Swal.fire(
             droppable.length == 0 ?
@@ -97,6 +99,7 @@ const Form = memo(() => {
                     }
                 }
         )
+
         droppable.length == 0 ? "" : navigate("/Dynamic/")
         form.length == 0 ? "" :
             dispatch(formActions.handleSave(form))

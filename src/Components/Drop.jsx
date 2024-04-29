@@ -81,7 +81,7 @@ const Drop = memo(({
                 <ul className='flex flex-col gap-2 items-center'>
                     {
                         droppable.map((item, index) => (
-                            <li key={item.componentType} className=' inline-flex gap-3'>
+                            <li key={item.componentType + index} className=' inline-flex gap-3'>
                                 {
                                     item.componentType === "calander" ?
                                         <>

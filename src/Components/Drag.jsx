@@ -11,9 +11,9 @@ const Drag = memo(({ dragable }) => {
             </h2>
             <ul className='grid grid-cols-2 gap-2'>
                 {
-                    dragable.map((item) =>
+                    dragable.map((item,index) =>
                         <Dragable
-                            key={item.id}
+                            key={index}
                             item={item}
                         />
                     )
