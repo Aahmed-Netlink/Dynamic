@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from "react"
+import { memo, useState } from "react"
 
 import { v4 as uuidv4 } from "uuid"
 import { DndProvider } from "react-dnd"
@@ -6,6 +6,7 @@ import { HTML5Backend } from "react-dnd-html5-backend"
 
 import { Button } from "antd"
 
+import { useNavigate } from "react-router-dom"
 import Drag from "../Components/Drag"
 import Drop from "../Components/Drop"
 import { useDispatch } from "react-redux"
@@ -57,6 +58,7 @@ const Form = memo(() => {
             id: uuidv4(),
         },
     ])
+    const navigate = useNavigate()
 
     const [droppable, setDroppable] = useState([])
 
@@ -71,6 +73,10 @@ const Form = memo(() => {
     const dispatch = useDispatch()
 
     const handleSave = (droppable) => {
+        const form = {
+            id: uuidv4(),
+            droppable: droppable,
+        }
         Swal.fire(
             droppable.length == 0 ?
                 {
@@ -91,20 +97,10 @@ const Form = memo(() => {
                     }
                 }
         )
-        droppable.length == 0 ? "" :
-        dispatch(formActions.handleSave(...droppable))
+        droppable.length == 0 ? "" : navigate("/Dynamic/")
+        form.length == 0 ? "" :
+            dispatch(formActions.handleSave(form))
         setDroppable([])
-        //     :
-        //     dispatch(formActions.handleSave(...droppable))
-        // setDroppable([])
-        // Swal.fire({
-        //     title: "Form Saved!",
-        //     html: "Form Saved Succesfully",
-        //     timer: 500,
-        //     didOpen: () => {
-        //         Swal.showLoading();
-        //     }
-        // })
     }
 
     return (

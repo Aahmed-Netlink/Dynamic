@@ -13,18 +13,11 @@ const HomePage = () => {
 
     const handleDelete = (id) => {
         console.log("Id Of Deleted Component ->", id);
-        const newForms = forms.filter((item)=> item.id !== id);
+        const newForms = forms.filter((item) => item.id !== id);
         console.log(newForms)
         dispatch(formActions.handleDelete(newForms))
     }
 
-    // useEffect(() => {
-    //     const myData = localStorage.getItem('forms');
-    //     const forms = JSON.parse(myData);
-    //     setFromsState([...formsState, ...forms]);
-    // }, []);
-
-    // console.log(formsState);
     return (
         <>
             <main className='grid grid-rows-2 px-4 py-2 h-[100%] gap-4'>
