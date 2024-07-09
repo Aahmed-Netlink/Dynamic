@@ -3,7 +3,8 @@ import { useState } from 'react';
 
 
 const initialForms = {
-    forms: []
+    forms: [],
+    updatedForms : []
 };
 
 const formSclice = createSlice({
@@ -18,12 +19,18 @@ const formSclice = createSlice({
             state.forms = action.payload;
         },
         handleEdit(state, action) {
-            const { id, updatedForm } = action.payload;
-            console.log(id);
-            const formIndex = state.forms.findIndex((form) => form.id == id);
+            console.log("Edit -->", action.payload);
+            const { id, droppable } = action.payload;
 
+            const formIndex = state.forms.findIndex((form) => form.id == id);
+            
+            state.updatedForms = action.payload
+            
+            console.log("Index Of Form -->", formIndex);
+            
+            console.log("Updated form --> " ,state.updatedForms);
             if (formIndex !== -1) {
-                state.forms[formIndex] = { ...state.forms[formIndex], ...updatedForm };
+                state.forms[formIndex] = { ...action.payload};
             } else {
                 console.error("Form with ID", id, "not found for editing.");
             }

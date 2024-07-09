@@ -101,8 +101,13 @@ const Form = memo(() => {
         )
 
         droppable.length == 0 ? "" : navigate("/Dynamic/")
-        form.length == 0 ? "" :
-            dispatch(formActions.handleSave(form))
+        if (!id.state) {
+            // dispatch(formActions.handleEdit(form))
+            form.length == 0 ? "" :
+                dispatch(formActions.handleSave(form))
+        }
+        // form.length == 0 ? "" :
+        //     dispatch(formActions.handleSave(form))
         setDroppable([])
     }
 
